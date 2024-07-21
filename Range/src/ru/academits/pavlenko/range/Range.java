@@ -51,9 +51,13 @@ public class Range {
     }
 
     public Range[] getRangesDifference(Range range, Range testRange) {
+        if (testRange.from < range.from && range.to < testRange.to) {
+            return null;
+        }
 
     }
 
+    @Override
     public String toString() {
         return "{" + from + ":" + to + "}";
     }

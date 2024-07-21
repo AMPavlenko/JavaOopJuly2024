@@ -1,6 +1,7 @@
 package ru.academits.pavlenko.range.main;
 
 import ru.academits.pavlenko.range.Range;
+
 import java.util.Scanner;
 
 public class Main {
@@ -31,12 +32,17 @@ public class Main {
                 "заканчивается на %f.%n", range.getFrom(), range.getTo());
         System.out.printf("Длина диапазона A равна %f.%n", range.getLength());
 */
-        System.out.println("Введите число для установки нижней границы нового диапазона B для проверки пересечения с диапазоном A:");
-        double rangeBStart = scanner.nextDouble();
+        //System.out.println("Введите число для установки нижней границы нового диапазона B для проверки пересечения с диапазоном A:");
+        //double rangeBStart = scanner.nextDouble();
 
-        System.out.println("Введите число для установки верхней границы нового диапазона B для проверки пересечения с диапазоном A:");
-        double rangeBEnd = scanner.nextDouble();
-        //System.out.println(range.toString(range));
-        //System.out.println(range.toString(range.getRangesIntersection(rangeBStart,rangeBEnd)));
+        //System.out.println("Введите число для установки верхней границы нового диапазона B для проверки пересечения с диапазоном A:");
+        //double rangeBEnd = scanner.nextDouble();
+        double testRangeStart = -8;
+        double testRangeEnd = 5;
+        Range testRange = new Range(testRangeStart, testRangeEnd);
+
+        Range finalRange = range.getRangesIntersection(range, testRange);
+        System.out.println("Интервал-пересечения двух интервалов: " + finalRange);
+
     }
 }

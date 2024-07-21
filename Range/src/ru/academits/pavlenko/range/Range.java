@@ -33,17 +33,16 @@ public class Range {
         return number >= from && number <= to;
     }
 
-    public Range getRangesIntersection(double rangeBStart, double rangeBEnd) {
+    public Range getRangesIntersection(Range range, Range testRange) {
 
-        if (from < rangeBEnd && to > rangeBStart) {
-            return new Range(rangeBStart, to);
+        if (range.from < testRange.to && range.to > testRange.from) {
+            return new Range(Math.max(testRange.from, range.from), Math.min(testRange.to, range.to));
         } else {
             return null;
         }
     }
 
     public String toString() {
-        return "{" + "}";
+        return "{" + from + ":" + to + "}";
     }
-
 }

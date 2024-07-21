@@ -2,6 +2,7 @@ package ru.academits.pavlenko.range.main;
 
 import ru.academits.pavlenko.range.Range;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -37,12 +38,16 @@ public class Main {
 
         //System.out.println("Введите число для установки верхней границы нового диапазона B для проверки пересечения с диапазоном A:");
         //double rangeBEnd = scanner.nextDouble();
-        double testRangeStart = -8;
-        double testRangeEnd = 5;
+
+        double testRangeStart = -20;
+        double testRangeEnd = -10;
         Range testRange = new Range(testRangeStart, testRangeEnd);
 
-        Range finalRange = range.getRangesIntersection(range, testRange);
-        System.out.println("Интервал-пересечения двух интервалов: " + finalRange);
+        Range RangesIntersection = range.getRangesIntersection(range, testRange);
+        System.out.println("Интервал-пересечения двух интервалов: " + RangesIntersection);
+
+        Range[] RangesUnion = range.getRangesUnion(range, testRange);
+        System.out.println("Интервал-объединения двух интервалов: " + Arrays.toString(RangesUnion));
 
     }
 }

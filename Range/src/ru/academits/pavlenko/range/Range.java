@@ -42,6 +42,18 @@ public class Range {
         }
     }
 
+    public Range[] getRangesUnion(Range range, Range testRange) {
+        if (testRange.from > range.to || range.from > testRange.to) {
+            return new Range[]{range, testRange};
+        } else {
+            return new Range[]{new Range(Math.min(testRange.from, range.from), Math.max(testRange.to, range.to))};
+        }
+    }
+
+    public Range[] getRangesDifference(Range range, Range testRange) {
+
+    }
+
     public String toString() {
         return "{" + from + ":" + to + "}";
     }

@@ -51,10 +51,24 @@ public class Range {
     }
 
     public Range[] getRangesDifference(Range range, Range testRange) {
-        if (testRange.from < range.from && range.to < testRange.to) {
-            return null;
+        //   range\testRange
+        if (range.from < testRange.from) {
+            if (testRange.to < range.to) {
+                return new Range[]{new Range(range.from, testRange.from), new Range(testRange.to, range.to)};
+            }
+            if (testRange.from <= range.to) {
+                return new Range[]{new Range(range.from, testRange.from)};
+            }
+        } else {
+            if (range.to <= testRange.to) {
+                return new Range[0];
+            }
+            if (range.from <= testRange.to) {
+                return new Range[]{new Range(testRange.to, range.to)};
+            }
         }
 
+        return new Range[]{new Range(range.from, range.to)};
     }
 
     @Override

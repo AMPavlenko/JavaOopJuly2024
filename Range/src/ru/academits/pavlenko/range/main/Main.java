@@ -29,25 +29,33 @@ public class Main {
         range.setFrom(rangeStart);
         range.setTo(rangeEnd);
 
-        System.out.printf("Исходный диапазон чисел был изменен. Новый диапазон чисел (диапазон A) начинается с %f и " +
+        System.out.printf("Исходный диапазон чисел был изменен. Новый диапазон чисел начинается с %f и " +
                 "заканчивается на %f.%n", range.getFrom(), range.getTo());
         System.out.printf("Длина диапазона A равна %f.%n", range.getLength());
 
-        System.out.println("Введите число для установки нижней границы нового диапазона B для проверки пересечения с диапазоном A:");
-        double testRangeStart = scanner.nextDouble();
+        System.out.println("Введите число для установки нижней границы первого интервала:");
+        double range1Start = scanner.nextDouble();
 
-        System.out.println("Введите число для установки верхней границы нового диапазона B для проверки пересечения с диапазоном A:");
-        double testRangeEnd = scanner.nextDouble();
+        System.out.println("Введите число для установки верхней границы первого интервала:");
+        double range1End = scanner.nextDouble();
 
-        Range testRange = new Range(testRangeStart, testRangeEnd);
+        System.out.println("Введите число для установки нижней границы второго интервала:");
+        double range2Start = scanner.nextDouble();
 
-        Range RangesIntersection = range.getRangesIntersection(range, testRange);
-        System.out.println("Интервал-пересечения двух интервалов А и В: " + RangesIntersection);
+        System.out.println("Введите число для установки верхней границы второго интервала:");
+        double range2End = scanner.nextDouble();
 
-        Range[] RangesUnion = range.getRangesUnion(range, testRange);
-        System.out.println("Интервал-объединения двух интервалов А и В: " + Arrays.toString(RangesUnion));
+        Range range1 = new Range(range1Start, range1End);
+        Range range2 = new Range(range2Start, range2End);
 
-        Range[] RangesDifference = range.getRangesDifference(range, testRange);
-        System.out.println("Интервал-разность двух интервалов (А\\В): " + Arrays.toString(RangesDifference));
+        Range intersection = range1.getIntersection(range2);
+        System.out.println("Интервал-пересечения двух интервалов: " + intersection);
+
+        Range[] union = range1.getUnion(range2);
+        System.out.println("Интервал-объединения двух интервалов: " + Arrays.toString(union));
+
+        Range[] difference = range1.getDifference(range2);
+        System.out.println("Интервал-разность двух интервалов (первый интервал\\второй интервал): "
+                + Arrays.toString(difference));
     }
 }

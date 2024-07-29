@@ -4,9 +4,9 @@ public class Rectangle implements Shape {
     private final double rectangleHeight;
     private final double rectangleWidth;
 
-    public Rectangle(double rectangleHeight, double rectangleWidth) {
-        this.rectangleHeight = rectangleHeight;
+    public Rectangle(double rectangleWidth, double rectangleHeight) {
         this.rectangleWidth = rectangleWidth;
+        this.rectangleHeight = rectangleHeight;
     }
 
     @Override

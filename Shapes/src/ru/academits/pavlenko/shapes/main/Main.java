@@ -43,7 +43,7 @@ public class Main {
         // Информация о фигуре максимальной площади из массива фигур
         System.out.printf("Фигура с максимальной площадью из массива фигур: %s.%n", shapes[0]);
         // Сортировка по периметру по убыванию
-        Arrays.sort(shapes, new PerimeterComparator());
+        Arrays.sort(shapes, new PerimetersComparator());
         // Информация о фигуре со вторым по величине периметром из массива фигур
         System.out.printf("Фигура со вторым по величине периметром из массива фигур: %s.%n", shapes[1]);
 

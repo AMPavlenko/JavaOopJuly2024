@@ -55,4 +55,31 @@ public class Triangle implements Shape {
 
         return triangleSide1Length + triangleSide2Length + triangleSide3Length;
     }
+
+    @Override
+    public String toString() {
+        return "треугольник площадью " + getArea() + " и периметром " + getPerimeter();
+    }
+
+    @Override
+    public boolean equals(Object shape) {
+        if (shape == this) {
+            return true;
+        }
+
+        if (shape == null || shape.getClass() != getClass()) {
+            return false;
+        }
+
+        Triangle p = (Triangle) shape;
+        return getArea() == p.getArea();
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 37;
+        int hash = 1;
+        hash = prime * hash + Double.hashCode(getArea());
+        return hash;
+    }
 }

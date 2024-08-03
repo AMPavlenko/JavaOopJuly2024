@@ -37,6 +37,7 @@ public class Range {
         if (from < range.to && to > range.from) {
             return new Range(Math.max(range.from, from), Math.min(range.to, to));
         }
+
         return null;
     }
 
@@ -44,12 +45,11 @@ public class Range {
         if (range.from > to || from > range.to) {
             return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
+
         return new Range[]{new Range(Math.min(range.from, from), Math.max(range.to, to))};
     }
 
     public Range[] getDifference(Range range) {
-        // range1\range2, то есть range1.getDifference(range2)
-
         if (from < range.from) {
             if (range.to < to) {
                 return new Range[]{new Range(from, range.from), new Range(range.to, to)};

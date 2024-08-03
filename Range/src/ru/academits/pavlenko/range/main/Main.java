@@ -52,7 +52,7 @@ public class Main {
         System.out.println("Интервал-пересечения двух интервалов: " + intersection);
 
         Range[] union = range1.getUnion(range2);
-        System.out.println("Интервал-объединения двух интервалов: " + Arrays.toString(union));
+        System.out.println("Интервал-объединение двух интервалов: " + Arrays.toString(union));
 
         Range[] difference = range1.getDifference(range2);
         System.out.println("Интервал-разность двух интервалов (первый интервал\\второй интервал): "

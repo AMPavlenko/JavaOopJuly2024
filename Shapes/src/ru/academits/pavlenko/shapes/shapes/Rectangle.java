@@ -3,12 +3,28 @@ package ru.academits.pavlenko.shapes.shapes;
 import ru.academits.pavlenko.shapes.Shape;
 
 public class Rectangle implements Shape {
-    private final double rectangleHeight;
-    private final double rectangleWidth;
+    private double rectangleHeight;
+    private double rectangleWidth;
 
     public Rectangle(double rectangleWidth, double rectangleHeight) {
-        this.rectangleWidth = rectangleWidth;
         this.rectangleHeight = rectangleHeight;
+        this.rectangleWidth = rectangleWidth;
+    }
+
+    public double getRectangleHeight() {
+        return rectangleHeight;
+    }
+
+    public void setRectangleHeight(double rectangleHeight) {
+        this.rectangleHeight = rectangleHeight;
+    }
+
+    public double getRectangleWidth() {
+        return rectangleWidth;
+    }
+
+    public void setRectangleWidth(double rectangleWidth) {
+        this.rectangleWidth = rectangleWidth;
     }
 
     @Override

@@ -3,9 +3,17 @@ package ru.academits.pavlenko.shapes.shapes;
 import ru.academits.pavlenko.shapes.Shape;
 
 public class Square implements Shape {
-    private final double sideLength;
+    private double sideLength;
 
     public Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    public double getSideLength() {
+        return sideLength;
+    }
+
+    public void setSideLength(double sideLength) {
         this.sideLength = sideLength;
     }
 

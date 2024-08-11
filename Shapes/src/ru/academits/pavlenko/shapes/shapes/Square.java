@@ -1,4 +1,6 @@
-package ru.academits.pavlenko.shapes;
+package ru.academits.pavlenko.shapes.shapes;
+
+import ru.academits.pavlenko.shapes.Shape;
 
 public class Square implements Shape {
     private final double sideLength;
@@ -29,7 +31,7 @@ public class Square implements Shape {
 
     @Override
     public String toString() {
-        return "квадрат площадью " + getArea() + " и периметром " + getPerimeter();
+        return "Квадрат. Длина стороны: " + sideLength;
     }
 
     @Override
@@ -43,14 +45,14 @@ public class Square implements Shape {
         }
 
         Square p = (Square) shape;
-        return getArea() == p.getArea();
+        return sideLength == p.sideLength;
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-        hash = prime * hash + Double.hashCode(getArea());
+        hash = prime * hash + Double.hashCode(sideLength);
         return hash;
     }
 }

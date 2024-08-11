@@ -1,4 +1,6 @@
-package ru.academits.pavlenko.shapes;
+package ru.academits.pavlenko.shapes.comparator;
+
+import ru.academits.pavlenko.shapes.Shape;
 
 import java.util.Comparator;
 

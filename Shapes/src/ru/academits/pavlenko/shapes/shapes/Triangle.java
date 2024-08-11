@@ -1,4 +1,6 @@
-package ru.academits.pavlenko.shapes;
+package ru.academits.pavlenko.shapes.shapes;
+
+import ru.academits.pavlenko.shapes.Shape;
 
 public class Triangle implements Shape {
     private final double x1;
@@ -58,7 +60,8 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return "треугольник площадью " + getArea() + " и периметром " + getPerimeter();
+        return "Треугольник. Координаты вершин " + "{" + x1 + ", " + y1 + "}" + "; " + "{" + x2 + ", " + y2 + "}"
+                + "; " + "{" + x3 + ", " + y3 + "}";
     }
 
     @Override
@@ -72,14 +75,19 @@ public class Triangle implements Shape {
         }
 
         Triangle p = (Triangle) shape;
-        return getArea() == p.getArea();
+        return x1 == p.x1 && x2 == p.x2 && x3 == p.x3 && y1 == p.y1 && y2 == p.y2 && y3 == p.y3;
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-        hash = prime * hash + Double.hashCode(getArea());
+        hash = prime * hash + Double.hashCode(x1);
+        hash = prime * hash + Double.hashCode(x2);
+        hash = prime * hash + Double.hashCode(x3);
+        hash = prime * hash + Double.hashCode(y1);
+        hash = prime * hash + Double.hashCode(y2);
+        hash = prime * hash + Double.hashCode(y3);
         return hash;
     }
 }

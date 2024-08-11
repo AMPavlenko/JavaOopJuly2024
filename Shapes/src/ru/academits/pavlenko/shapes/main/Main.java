@@ -1,23 +1,29 @@
 package ru.academits.pavlenko.shapes.main;
 
 import ru.academits.pavlenko.shapes.*;
+import ru.academits.pavlenko.shapes.comparator.AreasComparator;
+import ru.academits.pavlenko.shapes.comparator.PerimetersComparator;
+import ru.academits.pavlenko.shapes.shapes.Circle;
+import ru.academits.pavlenko.shapes.shapes.Rectangle;
+import ru.academits.pavlenko.shapes.shapes.Square;
+import ru.academits.pavlenko.shapes.shapes.Triangle;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         // Тестовый набор фигур
-        Square square1 = new Square(20);
+        Square square1 = new Square(30);
         Square square2 = new Square(20);
 
         Triangle triangle1 = new Triangle(0, 0, 0, 1, 1, 0);
-        Triangle triangle2 = new Triangle(10, 0, 20, 10, 30, 100);
+        Triangle triangle2 = new Triangle(0, 0, 0, 1, 1, 0);
 
-        Rectangle rectangle1 = new Rectangle(100, 200);
+        Rectangle rectangle1 = new Rectangle(20, 20);
         Rectangle rectangle2 = new Rectangle(20, 20);
 
         Circle circle1 = new Circle(20);
-        Circle circle2 = new Circle(30);
+        Circle circle2 = new Circle(20);
 
         System.out.printf("Первый квадрат: ширина - %f, высота - %f, площадь - %f, периметр - %f.%n",
                 square1.getWidth(), square1.getHeight(), square1.getArea(), square1.getPerimeter());
@@ -57,29 +63,29 @@ public class Main {
                     "идентификатор отличается, что означает, что объекты точно не равны.");
         }
 
-        // Пример сравнения площадей фигур с помощью equals
+        // Пример сравнения фигур по полям с помощью equals
         if (square1.equals(square2)) {
-            System.out.printf("Площади этих фигур равны.%n");
+            System.out.printf("Фигуры равны.%n");
         } else {
-            System.out.printf("Площади этих фигур не равны или объекты принадлежат разным классам %n");
+            System.out.printf("Фигуры не равны или объекты принадлежат разным классам %n");
         }
 
         if (triangle1.equals(triangle2)) {
-            System.out.printf("Площади этих фигур равны.%n");
+            System.out.printf("Фигуры равны.%n");
         } else {
-            System.out.printf("Площади этих фигур не равны или объекты принадлежат разным классам %n");
+            System.out.printf("Фигуры не равны или объекты принадлежат разным классам %n");
         }
 
         if (rectangle1.equals(rectangle2)) {
-            System.out.printf("Площади этих фигур равны.%n");
+            System.out.printf("Фигуры равны.%n");
         } else {
-            System.out.printf("Площади этих фигур не равны или объекты принадлежат разным классам %n");
+            System.out.printf("Фигуры не равны или объекты принадлежат разным классам %n");
         }
 
         if (circle1.equals(circle2)) {
-            System.out.printf("Площади этих фигур равны.%n");
+            System.out.printf("Фигуры равны.%n");
         } else {
-            System.out.printf("Площади этих фигур не равны или объекты принадлежат разным классам %n");
+            System.out.printf("Фигуры не равны или объекты принадлежат разным классам %n");
         }
     }
 }

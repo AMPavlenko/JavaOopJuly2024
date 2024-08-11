@@ -1,4 +1,6 @@
-package ru.academits.pavlenko.shapes;
+package ru.academits.pavlenko.shapes.shapes;
+
+import ru.academits.pavlenko.shapes.Shape;
 
 public class Rectangle implements Shape {
     private final double rectangleHeight;
@@ -31,7 +33,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "прямоугольник площадью " + getArea() + " и периметром " + getPerimeter();
+        return "Прямоугольник. Высота и ширина: " + rectangleHeight + " и " + rectangleWidth;
     }
 
     @Override
@@ -45,14 +47,15 @@ public class Rectangle implements Shape {
         }
 
         Rectangle p = (Rectangle) shape;
-        return getArea() == p.getArea();
+        return rectangleHeight == p.rectangleHeight && rectangleWidth == p.rectangleWidth;
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-        hash = prime * hash + Double.hashCode(getArea());
+        hash = prime * hash + Double.hashCode(rectangleHeight);
+        hash = prime * hash + Double.hashCode(rectangleWidth);
         return hash;
     }
 }

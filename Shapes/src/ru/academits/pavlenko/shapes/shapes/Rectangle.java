@@ -44,7 +44,8 @@ public class Rectangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return rectangleHeight + rectangleHeight + rectangleWidth + rectangleWidth;
+        int semiPerimeterSidesCount = 2;
+        return semiPerimeterSidesCount * (rectangleHeight + rectangleWidth);
     }
 
     @Override

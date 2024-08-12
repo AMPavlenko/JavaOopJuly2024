@@ -87,5 +87,26 @@ public class Main {
         } else {
             System.out.printf("Фигуры не равны или объекты принадлежат разным классам %n");
         }
+
+        square1.setSideLength(50);
+        System.out.printf("Новое значение стороны квадрата равно %f.%n", square1.getSideLength());
+
+        triangle1.setX1(1);
+        triangle1.setY1(0);
+        triangle1.setX2(20);
+        triangle1.setY2(0);
+        triangle1.setX3(0);
+        triangle1.setY3(50);
+        System.out.printf("Новые координаты вершин треугольника {x1 = %f, y1 = %f}, {x2 = %f, y2 = %f}, {x3 = %f," +
+                        " y3 = %f}.%n", triangle1.getX1(), triangle1.getY1(), triangle1.getX2(), triangle1.getY2(),
+                triangle1.getX3(), triangle1.getY3());
+
+        rectangle1.setRectangleHeight(100);
+        rectangle1.setRectangleWidth(200);
+        System.out.printf("Новое значение высоты и ширины прямоугольника равны %f и %f соответственно.%n",
+                rectangle1.getRectangleHeight(), rectangle1.getRectangleWidth());
+
+        circle1.setRadius(1000);
+        System.out.printf("Новое значение радиуса окружности равно %f.%n", circle1.getRadius());
     }
 }

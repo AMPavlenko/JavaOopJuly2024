@@ -34,7 +34,8 @@ public class Square implements Shape {
 
     @Override
     public double getPerimeter() {
-        return sideLength + sideLength + sideLength + sideLength;
+        int sidesCount = 4;
+        return sidesCount * sideLength;
     }
 
     @Override

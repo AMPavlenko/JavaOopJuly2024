@@ -3,76 +3,76 @@ package ru.academits.pavlenko.shapes.shapes;
 import ru.academits.pavlenko.shapes.Shape;
 
 public class Rectangle implements Shape {
-    private double rectangleHeight;
-    private double rectangleWidth;
+    private double height;
+    private double width;
 
-    public Rectangle(double rectangleWidth, double rectangleHeight) {
-        this.rectangleHeight = rectangleHeight;
-        this.rectangleWidth = rectangleWidth;
+    public Rectangle(double width, double height) {
+        this.height = height;
+        this.width = width;
     }
 
     public double getRectangleHeight() {
-        return rectangleHeight;
+        return height;
     }
 
-    public void setRectangleHeight(double rectangleHeight) {
-        this.rectangleHeight = rectangleHeight;
+    public void setRectangleHeight(double height) {
+        this.height = height;
     }
 
     public double getRectangleWidth() {
-        return rectangleWidth;
+        return width;
     }
 
-    public void setRectangleWidth(double rectangleWidth) {
-        this.rectangleWidth = rectangleWidth;
+    public void setRectangleWidth(double width) {
+        this.width = width;
     }
 
     @Override
     public double getWidth() {
-        return rectangleWidth;
+        return width;
     }
 
     @Override
     public double getHeight() {
-        return rectangleHeight;
+        return height;
     }
 
     @Override
     public double getArea() {
-        return rectangleHeight * rectangleWidth;
+        return height * width;
     }
 
     @Override
     public double getPerimeter() {
         int semiPerimeterSidesCount = 2;
-        return semiPerimeterSidesCount * (rectangleHeight + rectangleWidth);
+        return semiPerimeterSidesCount * (height + width);
     }
 
     @Override
     public String toString() {
-        return "Прямоугольник. Высота и ширина: " + rectangleHeight + " и " + rectangleWidth;
+        return "Прямоугольник. Высота и ширина: " + height + " и " + width;
     }
 
     @Override
-    public boolean equals(Object shape) {
-        if (shape == this) {
+    public boolean equals(Object object1) {
+        if (object1 == this) {
             return true;
         }
 
-        if (shape == null || shape.getClass() != getClass()) {
+        if (object1 == null || object1.getClass() != getClass()) {
             return false;
         }
 
-        Rectangle p = (Rectangle) shape;
-        return rectangleHeight == p.rectangleHeight && rectangleWidth == p.rectangleWidth;
+        Rectangle object2 = (Rectangle) object1;
+        return height == object2.height && width == object2.width;
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-        hash = prime * hash + Double.hashCode(rectangleHeight);
-        hash = prime * hash + Double.hashCode(rectangleWidth);
+        hash = prime * hash + Double.hashCode(height);
+        hash = prime * hash + Double.hashCode(width);
         return hash;
     }
 }

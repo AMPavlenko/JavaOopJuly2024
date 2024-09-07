@@ -29,7 +29,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * radius * radius;
     }
 
     @Override
@@ -43,17 +43,17 @@ public class Circle implements Shape {
     }
 
     @Override
-    public boolean equals(Object shape) {
-        if (shape == this) {
+    public boolean equals(Object object1) {
+        if (object1 == this) {
             return true;
         }
 
-        if (shape == null || shape.getClass() != getClass()) {
+        if (object1 == null || object1.getClass() != getClass()) {
             return false;
         }
 
-        Circle p = (Circle) shape;
-        return radius == p.radius;
+        Circle object2 = (Circle) object1;
+        return radius == object2.radius;
     }
 
     @Override

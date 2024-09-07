@@ -9,6 +9,7 @@ public class Triangle implements Shape {
     private double y1;
     private double y2;
     private double y3;
+
     private static final double epsilon = 1.0e-10;
 
     public Triangle(double x1, double y1, double x2, double y2, double x3, double y3) {
@@ -68,6 +69,10 @@ public class Triangle implements Shape {
         this.y3 = y3;
     }
 
+    private static double getSideLength(double x1, double x2, double y1, double y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+
     @Override
     public double getWidth() {
         return Math.max(Math.max(x1, x2), x3) - Math.min(Math.min(x1, x2), x3);
@@ -84,13 +89,11 @@ public class Triangle implements Shape {
             return 0;
         }
 
-        double triangleSide1Length = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        double triangleSide2Length = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
-        double triangleSide3Length = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
-
-        double triangleSemiPerimeter = (triangleSide1Length + triangleSide2Length + triangleSide3Length) / 2;
-        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - triangleSide1Length) *
-                (triangleSemiPerimeter - triangleSide2Length) * (triangleSemiPerimeter - triangleSide3Length));
+        double triangleSemiPerimeter = (getSideLength(x1, x2, y1, y2) + getSideLength(x2, x3, y2, y3) +
+                getSideLength(x3, x1, y3, y1)) / 2;
+        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - getSideLength(x1, x2, y1, y2)) *
+                (triangleSemiPerimeter - getSideLength(x2, x3, y2, y3)) * (triangleSemiPerimeter -
+                getSideLength(x3, x1, y3, y1)));
     }
 
     @Override
@@ -99,11 +102,7 @@ public class Triangle implements Shape {
             return 0;
         }
 
-        double triangleSide1Length = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        double triangleSide2Length = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
-        double triangleSide3Length = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
-
-        return triangleSide1Length + triangleSide2Length + triangleSide3Length;
+        return getSideLength(x1, x2, y1, y2) + getSideLength(x2, x3, y2, y3) + getSideLength(x3, x1, y3, y1);
     }
 
     @Override
@@ -113,17 +112,18 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public boolean equals(Object shape) {
-        if (shape == this) {
+    public boolean equals(Object object1) {
+        if (object1 == this) {
             return true;
         }
 
-        if (shape == null || shape.getClass() != getClass()) {
+        if (object1 == null || object1.getClass() != getClass()) {
             return false;
         }
 
-        Triangle p = (Triangle) shape;
-        return x1 == p.x1 && x2 == p.x2 && x3 == p.x3 && y1 == p.y1 && y2 == p.y2 && y3 == p.y3;
+        Triangle object2 = (Triangle) object1;
+        return x1 == object2.x1 && x2 == object2.x2 && x3 == object2.x3 && y1 == object2.y1 && y2 == object2.y2 &&
+                y3 == object2.y3;
     }
 
     @Override

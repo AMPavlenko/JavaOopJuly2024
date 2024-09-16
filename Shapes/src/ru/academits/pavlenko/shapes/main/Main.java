@@ -16,7 +16,7 @@ public class Main {
                 object, object.getWidth(), object.getHeight(), object.getArea(), object.getPerimeter());
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         // Тестовый набор фигур
         Square square1 = new Square(30);
         Square square2 = new Square(20);

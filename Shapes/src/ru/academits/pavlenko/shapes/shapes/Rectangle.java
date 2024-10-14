@@ -11,19 +11,19 @@ public class Rectangle implements Shape {
         this.width = width;
     }
 
-    public double getRectangleHeight() {
+    public double getSideLength() {
         return height;
     }
 
-    public void setRectangleHeight(double height) {
+    public void setSideLength(double height) {
         this.height = height;
     }
 
-    public double getRectangleWidth() {
+    public double getAdjacentSideLength() {
         return width;
     }
 
-    public void setRectangleWidth(double width) {
+    public void setAdjacentSideLength(double width) {
         this.width = width;
     }
 

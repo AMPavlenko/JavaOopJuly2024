@@ -89,11 +89,13 @@ public class Triangle implements Shape {
             return 0;
         }
 
-        double triangleSemiPerimeter = (getSideLength(x1, x2, y1, y2) + getSideLength(x2, x3, y2, y3) +
-                getSideLength(x3, x1, y3, y1)) / 2;
-        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - getSideLength(x1, x2, y1, y2)) *
-                (triangleSemiPerimeter - getSideLength(x2, x3, y2, y3)) * (triangleSemiPerimeter -
-                getSideLength(x3, x1, y3, y1)));
+        double side1Length = getSideLength(x1, x2, y1, y2);
+        double side2Length = getSideLength(x2, x3, y2, y3);
+        double side3Length = getSideLength(x3, x1, y3, y1);
+
+        double triangleSemiPerimeter = (side1Length + side2Length + side3Length) / 2;
+        return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - side1Length) * (triangleSemiPerimeter - side2Length)
+                * (triangleSemiPerimeter - side3Length));
     }
 
     @Override

@@ -10,7 +10,7 @@ public class Triangle implements Shape {
     private double y2;
     private double y3;
 
-    private static final double epsilon = 1.0e-10;
+    private static final double EPSILON = 1.0e-10;
 
     public Triangle(double x1, double y1, double x2, double y2, double x3, double y3) {
         this.x1 = x1;
@@ -69,7 +69,7 @@ public class Triangle implements Shape {
         this.y3 = y3;
     }
 
-    private static double getSideLength(double x1, double x2, double y1, double y2) {
+    private static double getSideLength(double x1, double y1, double x2, double y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
 
@@ -85,13 +85,13 @@ public class Triangle implements Shape {
 
     @Override
     public double getArea() {
-        if (Math.abs((x3 - x1) * (y2 - y1) - (x2 - x1) * (y3 - y1)) < epsilon) {
+        if (Math.abs((x3 - x1) * (y2 - y1) - (x2 - x1) * (y3 - y1)) < EPSILON) {
             return 0;
         }
 
-        double side1Length = getSideLength(x1, x2, y1, y2);
-        double side2Length = getSideLength(x2, x3, y2, y3);
-        double side3Length = getSideLength(x3, x1, y3, y1);
+        double side1Length = getSideLength(x1, y1, x2, y2);
+        double side2Length = getSideLength(x2, y2, x3, y3);
+        double side3Length = getSideLength(x3, y3, x1, y1);
 
         double triangleSemiPerimeter = (side1Length + side2Length + side3Length) / 2;
         return Math.sqrt(triangleSemiPerimeter * (triangleSemiPerimeter - side1Length) * (triangleSemiPerimeter - side2Length)
@@ -100,11 +100,11 @@ public class Triangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        if (Math.abs((x3 - x1) * (y2 - y1) - (x2 - x1) * (y3 - y1)) < epsilon) {
+        if (Math.abs((x3 - x1) * (y2 - y1) - (x2 - x1) * (y3 - y1)) < EPSILON) {
             return 0;
         }
 
-        return getSideLength(x1, x2, y1, y2) + getSideLength(x2, x3, y2, y3) + getSideLength(x3, x1, y3, y1);
+        return getSideLength(x1, y1, x2, y2) + getSideLength(x2, y2, x3, y3) + getSideLength(x3, y3, x1, y1);
     }
 
     @Override

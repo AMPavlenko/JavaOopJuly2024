@@ -5,6 +5,8 @@ import ru.academits.pavlenko.shapes.Shape;
 public class Square implements Shape {
     private double sideLength;
 
+    private static final int sidesCount = 4;
+
     public Square(double sideLength) {
         this.sideLength = sideLength;
     }
@@ -34,7 +36,6 @@ public class Square implements Shape {
 
     @Override
     public double getPerimeter() {
-        int sidesCount = 4;
         return sidesCount * sideLength;
     }
 

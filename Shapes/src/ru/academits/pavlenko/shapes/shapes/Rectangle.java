@@ -6,6 +6,8 @@ public class Rectangle implements Shape {
     private double height;
     private double width;
 
+    private static final int semiPerimeterSidesCount = 2;
+
     public Rectangle(double width, double height) {
         this.height = height;
         this.width = width;
@@ -44,7 +46,6 @@ public class Rectangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        int semiPerimeterSidesCount = 2;
         return semiPerimeterSidesCount * (height + width);
     }
 

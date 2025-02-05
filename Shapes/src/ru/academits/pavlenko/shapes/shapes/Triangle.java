@@ -109,8 +109,7 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return "Треугольник. Координаты вершин " + "{" + x1 + ", " + y1 + "}" + "; " + "{" + x2 + ", " + y2 + "}"
-                + "; " + "{" + x3 + ", " + y3 + "}";
+        return "Треугольник. Координаты вершин {" + x1 + ", " + y1 + "}; {" + x2 + ", " + y2 + "}; {" + x3 + ", " + y3 + "}";
     }
 
     @Override

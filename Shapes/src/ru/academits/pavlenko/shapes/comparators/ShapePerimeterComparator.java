@@ -1,4 +1,4 @@
-package ru.academits.pavlenko.shapes.comparator;
+package ru.academits.pavlenko.shapes.comparators;
 
 import ru.academits.pavlenko.shapes.Shape;
 

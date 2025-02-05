@@ -1,8 +1,8 @@
 package ru.academits.pavlenko.shapes.main;
 
 import ru.academits.pavlenko.shapes.*;
-import ru.academits.pavlenko.shapes.comparator.ShapeAreaComparator;
-import ru.academits.pavlenko.shapes.comparator.ShapePerimeterComparator;
+import ru.academits.pavlenko.shapes.comparators.ShapeAreaComparator;
+import ru.academits.pavlenko.shapes.comparators.ShapePerimeterComparator;
 import ru.academits.pavlenko.shapes.shapes.Circle;
 import ru.academits.pavlenko.shapes.shapes.Rectangle;
 import ru.academits.pavlenko.shapes.shapes.Square;
@@ -11,9 +11,9 @@ import ru.academits.pavlenko.shapes.shapes.Triangle;
 import java.util.Arrays;
 
 public class Main {
-    public static void shapeInfoPrint(Shape object) {
+    public static void printShapeInfo(Shape shape) {
         System.out.printf("Фигура %s. ширина - %f, высота - %f, площадь - %f, периметр - %f.%n",
-                object, object.getWidth(), object.getHeight(), object.getArea(), object.getPerimeter());
+                shape, shape.getWidth(), shape.getHeight(), shape.getArea(), shape.getPerimeter());
     }
 
     public static void main(String[] args) {
@@ -30,17 +30,12 @@ public class Main {
         Circle circle1 = new Circle(20);
         Circle circle2 = new Circle(20);
 
-        shapeInfoPrint(square1);
-        shapeInfoPrint(square2);
-        shapeInfoPrint(triangle1);
-        shapeInfoPrint(triangle2);
-        shapeInfoPrint(rectangle1);
-        shapeInfoPrint(rectangle2);
-        shapeInfoPrint(circle1);
-        shapeInfoPrint(circle2);
-
         // Создание массива фигур
         Shape[] shapes = {square1, square2, triangle1, triangle2, rectangle1, rectangle2, circle1, circle2};
+
+        for (Shape element : shapes) {
+            printShapeInfo(element);
+        }
 
         // Сортировка по площади по убыванию
         Arrays.sort(shapes, new ShapeAreaComparator());
@@ -57,7 +52,7 @@ public class Main {
             System.out.println("Следует сравнить методом equals.");
         } else {
             System.out.println("Не следует сравнивать методом equals, т.к. " +
-                    "идентификатор отличается, что означает, что объекты точно не равны.");
+                    "хэш-код (hashСode) фигур отличается друг от друга. Это означает, что объекты точно не равны.");
         }
 
         // Пример сравнения фигур по полям с помощью equals

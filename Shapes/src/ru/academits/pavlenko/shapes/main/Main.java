@@ -40,12 +40,12 @@ public class Main {
         // Сортировка по увеличению значений площади фигур
         Arrays.sort(shapes, new ShapeAreaComparator());
         // Информация о фигуре максимальной площади из массива фигур
-        System.out.printf("Фигура с максимальной площадью из массива фигур: %s.%n", shapes[shapes.length-1]);
+        System.out.printf("Фигура с максимальной площадью из массива фигур: %s.%n", shapes[shapes.length - 1]);
 
         // Сортировка по увеличению значений периметра фигур
         Arrays.sort(shapes, new ShapePerimeterComparator());
         // Информация о фигуре со вторым по величине периметром из массива фигур
-        System.out.printf("Фигура со вторым по величине периметром из массива фигур: %s.%n", shapes[shapes.length-2]);
+        System.out.printf("Фигура со вторым по величине периметром из массива фигур: %s.%n", shapes[shapes.length - 2]);
 
         // Пример сравнения площадей двух фигур с помощью хэш кода.
         if (square1.hashCode() == square2.hashCode()) {

@@ -45,17 +45,17 @@ public class Square implements Shape {
     }
 
     @Override
-    public boolean equals(Object object1) {
-        if (object1 == this) {
+    public boolean equals(Object object) {
+        if (object == this) {
             return true;
         }
 
-        if (object1 == null || object1.getClass() != getClass()) {
+        if (object == null || object.getClass() != getClass()) {
             return false;
         }
 
-        Square object2 = (Square) object1;
-        return sideLength == object2.sideLength;
+        Square square = (Square) object;
+        return sideLength == square.sideLength;
     }
 
     @Override

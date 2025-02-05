@@ -113,18 +113,18 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public boolean equals(Object object1) {
-        if (object1 == this) {
+    public boolean equals(Object object) {
+        if (object == this) {
             return true;
         }
 
-        if (object1 == null || object1.getClass() != getClass()) {
+        if (object == null || object.getClass() != getClass()) {
             return false;
         }
 
-        Triangle object2 = (Triangle) object1;
-        return x1 == object2.x1 && x2 == object2.x2 && x3 == object2.x3 && y1 == object2.y1 && y2 == object2.y2 &&
-                y3 == object2.y3;
+        Triangle triangle = (Triangle) object;
+        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3 && y1 == triangle.y1 && y2 == triangle.y2 &&
+                y3 == triangle.y3;
     }
 
     @Override

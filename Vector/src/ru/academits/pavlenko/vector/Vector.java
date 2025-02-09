@@ -1,23 +1,83 @@
 package ru.academits.pavlenko.vector;
 
+import java.util.Arrays;
+
+import static java.lang.Math.max;
+
 public class Vector {
     private int n;
-    private double[] vector;
+    private double[] vectorComponents;
 
     public Vector(int n) {
         this.n = n;
-        vector = new double[n];
+        vectorComponents = new double[n];
     }
 
     public Vector(Vector vector) {
         this.n = vector.n;
-        this.vector = vector.vector;
+        this.vectorComponents = vector.vectorComponents;
+    }
+
+    public Vector(double[] vectorComponents) {
+        this.n = vectorComponents.length;
+        this.vectorComponents = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            this.vectorComponents[i] = vectorComponents[i];
+        }
+    }
+
+    public Vector(int n, double[] vectorComponents) {
+        this.n = n;
+        this.vectorComponents = new double[n];
+
+        for (int i = 0; i < vectorComponents.length; i++) {
+            this.vectorComponents[i] = vectorComponents[i];
+        }
     }
 
     public int getSize() {
-        return vector.length;
+        return vectorComponents.length;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append('{').append(Arrays.toString(vectorComponents)).append('}');
+        stringBuilder.deleteCharAt(1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 2);
+
+        return stringBuilder.toString();
+    }
+
+    public Vector addition(Vector vector) {
+        int maxVectorDimension = max(this.n, vector.n);
+        Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
+        Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
+
+        double[] additionResult = new double[maxVectorDimension];
+        for (int i = 0; i < maxVectorDimension; i++) {
+            additionResult[i] = thisVector.vectorComponents[i] + addVector.vectorComponents[i];
+        }
+
+        return new Vector(maxVectorDimension, additionResult);
+    }
+
+    public Vector subtraction(Vector vector) {
+        int maxVectorDimension = max(this.n, vector.n);
+        Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
+        Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
+
+        double[] additionResult = new double[maxVectorDimension];
+        for (int i = 0; i < maxVectorDimension; i++) {
+            additionResult[i] = thisVector.vectorComponents[i] - addVector.vectorComponents[i];
+        }
+
+        return new Vector(maxVectorDimension, additionResult);
     }
 }
+
+
   /*  private double[] components;
     private int n;
 
@@ -193,7 +253,7 @@ public class Vector {
 
 
 /*
-package ru.academits.pavlenko.vector;
+package ru.academits.pavlenko.vectorComponents;
 
 public class Vector {
     private double[] components;

@@ -1,7 +1,24 @@
 package ru.academits.pavlenko.vector;
 
 public class Vector {
-    private double[] components;
+    private int n;
+    private double[] vector;
+
+    public Vector(int n) {
+        this.n = n;
+        vector = new double[n];
+    }
+
+    public Vector(Vector vector) {
+        this.n = vector.n;
+        this.vector = vector.vector;
+    }
+
+    public int getSize() {
+        return vector.length;
+    }
+}
+  /*  private double[] components;
     private int n;
 
     public Vector(int n) {
@@ -12,7 +29,7 @@ public class Vector {
         this.n = n;
         components = new double[n];
     }
-/*
+
     public Vector(Vector v) {
         size = v.size;
         components = v.components.clone();
@@ -172,7 +189,7 @@ public class Vector {
         return sum;
     }
     */
-}
+/*}
 
 
 /*

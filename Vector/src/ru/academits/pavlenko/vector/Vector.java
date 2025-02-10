@@ -68,12 +68,12 @@ public class Vector {
         Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
         Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
 
-        double[] additionResult = new double[maxVectorDimension];
+        double[] subtractionResult = new double[maxVectorDimension];
         for (int i = 0; i < maxVectorDimension; i++) {
-            additionResult[i] = thisVector.vectorComponents[i] - addVector.vectorComponents[i];
+            subtractionResult[i] = thisVector.vectorComponents[i] - addVector.vectorComponents[i];
         }
 
-        return new Vector(maxVectorDimension, additionResult);
+        return new Vector(maxVectorDimension, subtractionResult);
     }
 }
 

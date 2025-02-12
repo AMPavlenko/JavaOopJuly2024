@@ -1,12 +1,8 @@
 package ru.academits.pavlenko.shapes.main;
 
-import ru.academits.pavlenko.shapes.*;
 import ru.academits.pavlenko.shapes.comparators.ShapeAreaComparator;
 import ru.academits.pavlenko.shapes.comparators.ShapePerimeterComparator;
-import ru.academits.pavlenko.shapes.shapes.Circle;
-import ru.academits.pavlenko.shapes.shapes.Rectangle;
-import ru.academits.pavlenko.shapes.shapes.Square;
-import ru.academits.pavlenko.shapes.shapes.Triangle;
+import ru.academits.pavlenko.shapes.shapes.*;
 
 import java.util.Arrays;
 
@@ -33,8 +29,8 @@ public class Main {
         // Создание массива фигур
         Shape[] shapes = {square1, square2, triangle1, triangle2, rectangle1, rectangle2, circle1, circle2};
 
-        for (Shape element : shapes) {
-            printShapeInfo(element);
+        for (Shape shape : shapes) {
+            printShapeInfo(shape);
         }
 
         // Сортировка по увеличению значений площади фигур
@@ -93,10 +89,10 @@ public class Main {
                         " y3 = %f}.%n", triangle1.getX1(), triangle1.getY1(), triangle1.getX2(), triangle1.getY2(),
                 triangle1.getX3(), triangle1.getY3());
 
-        rectangle1.setSideLength(100);
-        rectangle1.setAdjacentSideLength(200);
+        rectangle1.setHeight(100);
+        rectangle1.setWidth(200);
         System.out.printf("Новое значение высоты и ширины прямоугольника равны %f и %f соответственно.%n",
-                rectangle1.getSideLength(), rectangle1.getAdjacentSideLength());
+                rectangle1.getHeight(), rectangle1.getWidth());
 
         circle1.setRadius(1000);
         System.out.printf("Новое значение радиуса окружности равно %f.%n", circle1.getRadius());

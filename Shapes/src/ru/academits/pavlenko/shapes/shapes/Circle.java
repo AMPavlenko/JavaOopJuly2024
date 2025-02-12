@@ -1,7 +1,5 @@
 package ru.academits.pavlenko.shapes.shapes;
 
-import ru.academits.pavlenko.shapes.Shape;
-
 public class Circle implements Shape {
     private double radius;
 

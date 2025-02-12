@@ -1,4 +1,4 @@
-package ru.academits.pavlenko.shapes;
+package ru.academits.pavlenko.shapes.shapes;
 
 public interface Shape {
     double getWidth();

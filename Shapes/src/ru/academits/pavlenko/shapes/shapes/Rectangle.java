@@ -1,32 +1,21 @@
 package ru.academits.pavlenko.shapes.shapes;
 
-import ru.academits.pavlenko.shapes.Shape;
-
 public class Rectangle implements Shape {
     private double height;
     private double width;
 
-    private static final int semiPerimeterSidesCount = 2;
-
-    public Rectangle(double width, double height) {
+    public Rectangle(double height, double width) {
         this.height = height;
         this.width = width;
     }
 
-    public double getSideLength() {
+    @Override
+    public double getHeight() {
         return height;
     }
 
-    public void setSideLength(double height) {
+    public void setHeight(double height) {
         this.height = height;
-    }
-
-    public double getAdjacentSideLength() {
-        return width;
-    }
-
-    public void setAdjacentSideLength(double width) {
-        this.width = width;
     }
 
     @Override
@@ -34,9 +23,8 @@ public class Rectangle implements Shape {
         return width;
     }
 
-    @Override
-    public double getHeight() {
-        return height;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
     @Override
@@ -46,7 +34,7 @@ public class Rectangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return semiPerimeterSidesCount * (height + width);
+        return 2 * (height + width);
     }
 
     @Override

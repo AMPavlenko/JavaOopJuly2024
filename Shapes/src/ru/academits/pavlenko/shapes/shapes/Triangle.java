@@ -1,7 +1,5 @@
 package ru.academits.pavlenko.shapes.shapes;
 
-import ru.academits.pavlenko.shapes.Shape;
-
 public class Triangle implements Shape {
     private double x1;
     private double x2;
@@ -123,8 +121,8 @@ public class Triangle implements Shape {
         }
 
         Triangle triangle = (Triangle) object;
-        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3 && y1 == triangle.y1 && y2 == triangle.y2 &&
-                y3 == triangle.y3;
+        return x1 == triangle.x1 && x2 == triangle.x2 && x3 == triangle.x3
+                && y1 == triangle.y1 && y2 == triangle.y2 && y3 == triangle.y3;
     }
 
     @Override

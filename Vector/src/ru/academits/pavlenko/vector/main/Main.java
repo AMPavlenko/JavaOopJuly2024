@@ -26,5 +26,10 @@ public class Main {
 
         Vector vector3vector4subtraction = new Vector(vector3.subtraction(vector4));
         System.out.println(vector3vector4subtraction);
+
+        double scalar = 7.8;
+
+        Vector vector5 = new Vector(vector3.scalarVectorMultiplication(scalar));
+        System.out.println(vector5);
     }
 }

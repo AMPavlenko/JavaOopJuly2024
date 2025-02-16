@@ -16,6 +16,10 @@ public class Main {
         System.out.printf("%d%n", vector2.getSize());
         System.out.println(vector2);
 
+        //Проверка конструктора Vector(n, double[])
+        Vector vector22 = new Vector(6, vector2Components);
+        System.out.printf("vector22: " + vector22 + "%n");
+
         double[] vector3Components = {2, 4, 6, 8, 10};
         Vector vector3 = new Vector(vector3Components);
         double[] vector4Components = {1, -3, -1, 5, 10, 1};
@@ -31,5 +35,24 @@ public class Main {
 
         Vector vector5 = new Vector(vector3.scalarVectorMultiplication(scalar));
         System.out.println(vector5);
+
+        //Проверка метода разворота вектора
+        Vector vector6 = new Vector(vector3.vectorReversal());
+        System.out.printf("Вектор: " + vector3 + "%nРазвернутый вектор: " + vector6 + "%n");
+        System.out.println();
+
+        //Проверка метода получения длины вектора
+        System.out.println(vector4.getLength());
+
+        //Проверка получения значения компоненты по индексу
+        int index = 2;
+        System.out.printf("Значение компоненты вектора по индексу %d равно: %s%n", index,
+                vector4.getVectorComponent(index));
+
+        //Проверка установки значения компоненты по индексу
+        double component = 10;
+        vector4.setVectorComponent(index, component);
+        System.out.printf("Новое значение компоненты вектора по индексу %d равно: %s%n", index,
+                vector4.getVectorComponent(index));
     }
 }

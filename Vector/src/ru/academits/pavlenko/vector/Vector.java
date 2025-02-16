@@ -9,6 +9,10 @@ public class Vector {
     private double[] vectorComponents;
 
     public Vector(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Size must be positive");
+        }
+
         this.n = n;
         vectorComponents = new double[n];
     }
@@ -28,6 +32,10 @@ public class Vector {
     }
 
     public Vector(int n, double[] vectorComponents) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Size must be positive");
+        }
+
         this.n = n;
         this.vectorComponents = new double[n];
 
@@ -80,9 +88,45 @@ public class Vector {
         double[] multiplicationResult = new double[this.n];
 
         for (int i = 0; i < this.n; i++) {
-            multiplicationResult[i] = this.vectorComponents[i] * scalar;
+            multiplicationResult[i] = scalar * this.vectorComponents[i];
         }
 
         return new Vector(this.n, multiplicationResult);
+    }
+
+    public Vector vectorReversal() {
+        double[] reversalResult = new double[this.n];
+
+        for (int i = 0; i < this.n; i++) {
+            reversalResult[i] = -1 * this.vectorComponents[i];
+        }
+
+        return new Vector(this.n, reversalResult);
+    }
+
+    public double getLength() {
+        double sum = 0;
+
+        for (double vectorComponent : this.vectorComponents) {
+            sum += vectorComponent * vectorComponent;
+        }
+
+        return Math.sqrt(sum);
+    }
+
+    public double getVectorComponent(int index) {
+        if (index < 0 || index >= this.n) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        return this.vectorComponents[index];
+    }
+
+    public void setVectorComponent(int index, double component) {
+        if (index < 0 || index >= this.n) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        this.vectorComponents[index] = component;
     }
 }

@@ -4,55 +4,92 @@ import ru.academits.pavlenko.vector.Vector;
 
 public class Main {
     public static void main(String[] args) {
+        //Проверка создания вектора размерности n, все компоненты которого равны 0
         Vector vector = new Vector(3);
+        //Проверка работы конструктора копирования
         Vector vector1 = new Vector(vector);
 
-        System.out.printf("%d%n", vector.getSize());
-        System.out.printf("%d%n", vector1.getSize());
+        //Проверка работы метода getSize() для получения размерности вектора
+        System.out.printf("Размерность вектора %s равна %d.", vector, vector.getSize());
+        System.out.printf("%nРазмерность вектора %s равна %d.%n", vector1, vector1.getSize());
 
+        //Проверка работы конструктора Vector(double[]) заполнения вектора значениями из массива
         double[] vector2Components = {1.1, 3, 4.7, 5.4, 7.1};
         Vector vector2 = new Vector(vector2Components);
+        System.out.printf("%nЗначения компонент вектора vector2 равны %s.", vector2);
 
-        System.out.printf("%d%n", vector2.getSize());
-        System.out.println(vector2);
+        //Проверка работы конструктора Vector(n, double[]) для заполнения вектора значениями из массива.
+        Vector vector3 = new Vector(6, vector2Components);
+        System.out.printf("%nЗначения компонент вектора vector3 равны %s.%n", vector3);
 
-        //Проверка конструктора Vector(n, double[])
-        Vector vector22 = new Vector(6, vector2Components);
-        System.out.printf("vector22: " + vector22 + "%n");
-
-        double[] vector3Components = {2, 4, 6, 8, 10};
-        Vector vector3 = new Vector(vector3Components);
-        double[] vector4Components = {1, -3, -1, 5, 10, 1};
+        //Проверка работы метода прибавления к вектору другого вектора
+        double[] vector4Components = {2, 4, 6, 8, 10};
         Vector vector4 = new Vector(vector4Components);
+        double[] vector5Components = {1, -3, -1, 5, 10, 1};
+        Vector vector5 = new Vector(vector5Components);
 
-        Vector vector3vector4addition = new Vector(vector3.addition(vector4));
-        System.out.println(vector3vector4addition);
+        Vector vector4vector5addition = new Vector(vector4.addition(vector5));
+        System.out.printf("%nВектор %s + вектор %s = %s.", vector4, vector5, vector4vector5addition);
 
-        Vector vector3vector4subtraction = new Vector(vector3.subtraction(vector4));
-        System.out.println(vector3vector4subtraction);
+        //Проверка работы метода вычитания из вектора другого вектора
+        Vector vector4vector5subtraction = new Vector(vector4.subtraction(vector5));
+        System.out.printf("%nВектор %s - вектор %s = %s.", vector4, vector5, vector4vector5subtraction);
 
+        //Проверка работы метода умножения вектора на скаляр
         double scalar = 7.8;
 
-        Vector vector5 = new Vector(vector3.scalarVectorMultiplication(scalar));
-        System.out.println(vector5);
+        Vector vector6 = new Vector(vector4.scalarVectorMultiplication(scalar));
+        System.out.printf("%nСкалярная величина %s * вектор %s = %s.%n", scalar, vector4, vector6);
 
         //Проверка метода разворота вектора
-        Vector vector6 = new Vector(vector3.vectorReversal());
-        System.out.printf("Вектор: " + vector3 + "%nРазвернутый вектор: " + vector6 + "%n");
-        System.out.println();
+        Vector vector7 = new Vector(vector4.vectorReversal());
+        System.out.printf("%nНачальный вектор %s. Развернутый вектор %s.%n", vector4, vector7);
 
         //Проверка метода получения длины вектора
-        System.out.println(vector4.getLength());
+        System.out.printf("%nДлина вектора %s равна %s.%n", vector5, vector5.getLength());
 
         //Проверка получения значения компоненты по индексу
         int index = 2;
-        System.out.printf("Значение компоненты вектора по индексу %d равно: %s%n", index,
-                vector4.getVectorComponent(index));
+        System.out.printf("%nЗначение компоненты вектора %s по индексу %d равно %s.%n", vector5, index,
+                vector5.getVectorComponent(index));
 
         //Проверка установки значения компоненты по индексу
         double component = 10;
-        vector4.setVectorComponent(index, component);
-        System.out.printf("Новое значение компоненты вектора по индексу %d равно: %s%n", index,
-                vector4.getVectorComponent(index));
+        vector5.setVectorComponent(index, component);
+        System.out.printf("%nНовое значение компоненты вектора %s по индексу %d равно: %s.%n",
+                vector5, index, vector5.getVectorComponent(index));
+
+        System.out.println();
+
+        //Проверка сравнения векторов методом equals
+        double[] vector8Components = {2, 4, 6, 8, 10};
+        Vector vector8 = new Vector(vector8Components);
+
+        if (vector4.equals(vector8)) {
+            System.out.println("Фигуры равны.");
+        } else {
+            System.out.println("Фигуры не равны или объекты принадлежат разным классам.");
+        }
+
+        System.out.println();
+
+        //Проверка сравнения векторов с помощью хэш кода.
+        if (vector4.hashCode() == vector8.hashCode()) {
+            System.out.println("Хэш коды объектов равны. Следует сравнить методом equals.");
+        } else {
+            System.out.println("Объекты не равны.");
+        }
+
+        //Проверка статического метода сложения векторов
+        System.out.printf("%nРезультат сложения векторов %s и %s равен: %s", vector4, vector8,
+                Vector.addition(vector4, vector8));
+
+        //Проверка статического метода вычитания векторов
+        System.out.printf("%nРезультат вычитания векторов %s и %s равен: %s", vector4, vector8,
+                Vector.subtraction(vector4, vector8));
+
+        //Проверка статического метода скалярного произведения векторов
+        System.out.printf("%nРезультат скалярного произведения векторов %s и %s равен: %s", vector4, vector8,
+                Vector.scalarMultiplication(vector4, vector8));
     }
 }

@@ -8,6 +8,10 @@ public class Matrix {
     private Vector[] rows;
 
     public Matrix(int n, int m) {
+        if (n <= 0 || m <= 0) {
+            throw new IllegalArgumentException("Matrix dimensions must be positive");
+        }
+
         this.n = n;
         this.m = m;
         this.rows = new Vector[n];
@@ -25,6 +29,20 @@ public class Matrix {
 
         for (int i = 0; i < n; i++) {
             this.rows[i] = new Vector(matrix.rows[i]);
+        }
+    }
+
+    public Matrix(double[][] matrixComponents) {
+        if (matrixComponents.length == 0 || matrixComponents[0].length == 0) {
+            throw new IllegalArgumentException("Matrix dimensions must be positive");
+        }
+
+        this.n = matrixComponents.length;
+        this.m = matrixComponents[0].length;
+        this.rows = new Vector[n];
+
+        for (int i = 0; i < n; i++) {
+            this.rows[i] = new Vector(matrixComponents[i]);
         }
     }
 }

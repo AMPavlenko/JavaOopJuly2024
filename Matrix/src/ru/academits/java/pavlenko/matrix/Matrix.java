@@ -123,6 +123,25 @@ public class Matrix {
         return multiplicationResult;
     }
 
+    public double determinant() {
+        if (this.n != this.m) {
+            throw new UnsupportedOperationException("Детерминант может быть посчитан только для квадратной матрицы.");
+        }
+
+        if (this.n == 2) {
+            return this.rows[0].getVectorComponent(0) * this.rows[1].getVectorComponent(1) -
+                    this.rows[0].getVectorComponent(1) * this.rows[1].getVectorComponent(0);
+        }
+
+        double det = 0;
+
+        for (int i = 0; i < this.m; i++) {
+            det += (i % 2 == 0 ? 1 : -1) * rows[0].getVectorComponent(i);
+        }
+
+        return det;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");

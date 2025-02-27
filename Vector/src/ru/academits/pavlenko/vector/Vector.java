@@ -2,42 +2,37 @@ package ru.academits.pavlenko.vector;
 
 import java.util.Arrays;
 
-import static java.lang.Math.max;
-
 public class Vector {
-    private int n;
     private double[] vectorComponents;
 
-    public Vector(int n) {
-        if (n <= 0) {
+    public Vector(int size) {
+
+        if (size <= 0) {
             throw new IllegalArgumentException("Size must be positive");
         }
 
-        this.n = n;
-        vectorComponents = new double[n];
+        vectorComponents = new double[size];
     }
 
     public Vector(Vector vector) {
-        this.n = vector.n;
         this.vectorComponents = vector.vectorComponents;
     }
 
     public Vector(double[] vectorComponents) {
-        this.n = vectorComponents.length;
-        this.vectorComponents = new double[n];
+        this.vectorComponents = new double[vectorComponents.length];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < vectorComponents.length; i++) {
             this.vectorComponents[i] = vectorComponents[i];
         }
     }
 
-    public Vector(int n, double[] vectorComponents) {
-        if (n <= 0) {
+    public Vector(int size, double[] vectorComponents) {
+
+        if (size <= 0) {
             throw new IllegalArgumentException("Size must be positive");
         }
 
-        this.n = n;
-        this.vectorComponents = new double[n];
+        this.vectorComponents = new double[vectorComponents.length];
 
         for (int i = 0; i < vectorComponents.length; i++) {
             this.vectorComponents[i] = vectorComponents[i];
@@ -59,7 +54,7 @@ public class Vector {
     }
 
     public Vector addition(Vector vector) {
-        int maxVectorDimension = max(this.n, vector.n);
+        int maxVectorDimension = Math.max(this.vectorComponents.length, vector.vectorComponents.length);
         Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
         Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
 
@@ -73,7 +68,7 @@ public class Vector {
     }
 
     public Vector subtraction(Vector vector) {
-        int maxVectorDimension = max(this.n, vector.n);
+        int maxVectorDimension = Math.max(this.vectorComponents.length, vector.vectorComponents.length);
         Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
         Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
 
@@ -87,29 +82,29 @@ public class Vector {
     }
 
     public Vector scalarVectorMultiplication(double scalar) {
-        double[] multiplicationResult = new double[this.n];
+        double[] multiplicationResult = new double[vectorComponents.length];
 
-        for (int i = 0; i < this.n; i++) {
-            multiplicationResult[i] = scalar * this.vectorComponents[i];
+        for (int i = 0; i < vectorComponents.length; i++) {
+            multiplicationResult[i] = scalar * vectorComponents[i];
         }
 
-        return new Vector(this.n, multiplicationResult);
+        return new Vector(vectorComponents.length, multiplicationResult);
     }
 
     public Vector vectorReversal() {
-        double[] reversalResult = new double[this.n];
+        double[] reversalResult = new double[vectorComponents.length];
 
-        for (int i = 0; i < this.n; i++) {
-            reversalResult[i] = -1 * this.vectorComponents[i];
+        for (int i = 0; i < vectorComponents.length; i++) {
+            reversalResult[i] = -1 * vectorComponents[i];
         }
 
-        return new Vector(this.n, reversalResult);
+        return new Vector(vectorComponents.length, reversalResult);
     }
 
     public double getLength() {
         double sum = 0;
 
-        for (double vectorComponent : this.vectorComponents) {
+        for (double vectorComponent : vectorComponents) {
             sum += vectorComponent * vectorComponent;
         }
 
@@ -117,23 +112,26 @@ public class Vector {
     }
 
     public double getVectorComponent(int index) {
-        if (index < 0 || index >= this.n) {
+
+        if (index < 0 || index >= vectorComponents.length) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
 
-        return this.vectorComponents[index];
+        return vectorComponents[index];
     }
 
     public void setVectorComponent(int index, double component) {
-        if (index < 0 || index >= this.n) {
+
+        if (index < 0 || index >= vectorComponents.length) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
 
-        this.vectorComponents[index] = component;
+        vectorComponents[index] = component;
     }
 
     @Override
     public boolean equals(Object object) {
+
         if (object == this) {
             return true;
         }
@@ -143,11 +141,13 @@ public class Vector {
         }
 
         Vector vector = (Vector) object;
-        if (this.n != vector.n) {
+
+        if (this.vectorComponents.length != vector.vectorComponents.length) {
             return false;
         }
 
-        for (int i = 0; i < this.n; i++) {
+        for (int i = 0; i < this.vectorComponents.length; i++) {
+
             if (this.vectorComponents[i] != vector.vectorComponents[i]) {
                 return false;
             }
@@ -160,7 +160,7 @@ public class Vector {
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-        hash = prime * hash + Arrays.hashCode(this.vectorComponents);
+        hash = prime * hash + Arrays.hashCode(vectorComponents);
 /*
         for (int i = 0; i < this.n; i++) {
             hash = prime * hash + Double.hashCode(this.vectorComponents[i]);
@@ -170,7 +170,7 @@ public class Vector {
     }
 
     public static Vector addition(Vector aVector, Vector bVector) {
-        int maxVectorDimension = max(aVector.n, bVector.n);
+        int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
         Vector firstVector = new Vector(maxVectorDimension, aVector.vectorComponents);
         Vector secondVector = new Vector(maxVectorDimension, bVector.vectorComponents);
 
@@ -184,7 +184,7 @@ public class Vector {
     }
 
     public static Vector subtraction(Vector aVector, Vector bVector) {
-        int maxVectorDimension = max(aVector.n, bVector.n);
+        int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
         Vector firstVector = new Vector(maxVectorDimension, aVector.vectorComponents);
         Vector secondVector = new Vector(maxVectorDimension, bVector.vectorComponents);
 
@@ -198,7 +198,7 @@ public class Vector {
     }
 
     public static double scalarMultiplication(Vector aVector, Vector bVector) {
-        int maxVectorDimension = max(aVector.n, bVector.n);
+        int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
         Vector firstVector = new Vector(maxVectorDimension, aVector.vectorComponents);
         Vector secondVector = new Vector(maxVectorDimension, bVector.vectorComponents);
 

@@ -16,49 +16,50 @@ public class ArrayListHome {
 
             return list;
         } catch (IOException e) {
-            throw new FileNotFoundException("Файл %f не найден!", fileName);
+            throw new FileNotFoundException("Файл не найден!");
         }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<String> fileList = getList("file1.txt");
-        System.out.println(fileList);
+    public static ArrayList<Integer> getOddValuesList(ArrayList<Integer> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) % 2 == 0) {
+                for (int j = i; j < list.size() - 1; j++) {
+                    list.set(j, list.get(j + 1));
+                }
 
-
-
-        ArrayList<Integer> list2 = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 129, 130, -130, -129));
-
-        /*
-        int i = 0;
-
-        while (i < list2.size()) {
-
-            if (list2.get(i) % 2 == 0) {
-                list2.remove(i);
+                list.removeLast();
+                i--;
             }
-
-            i++;
         }
-        */
 
-        list2.removeIf(element -> element % 2 == 0);
+        //list.removeIf(element -> element % 2 == 0);
+        return list;
+    }
 
-        System.out.println(list2);
-
-        ArrayList<Integer> list3 = new ArrayList<>(Arrays.asList(1, 5, 2, 1, 3, 5));
-        ArrayList<Integer> list4 = new ArrayList<>();
+    public static ArrayList<Integer> getUniqueValuesList(ArrayList<Integer> list) {
+        ArrayList<Integer> uniqueValuesList = new ArrayList<>(list.size());
 
         int j = 0;
 
-        while (j < list3.size()) {
-
-            if (!list4.contains(list3.get(j))) {
-                list4.add(list3.get(j));
+        while (j < list.size()) {
+            if (!uniqueValuesList.contains(list.get(j))) {
+                uniqueValuesList.add(list.get(j));
             }
 
             j++;
         }
 
-        System.out.println(list4);
+        return uniqueValuesList;
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<String> fileList = getList("file.txt");
+        System.out.println(fileList);
+
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 129, 130, -130, -129));
+
+        System.out.println(getOddValuesList(list));
+
+        System.out.println(getUniqueValuesList(list));
     }
 }

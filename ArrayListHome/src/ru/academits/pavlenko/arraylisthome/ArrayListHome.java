@@ -1,22 +1,30 @@
 package ru.academits.pavlenko.arraylisthome;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ArrayListHome {
-    public static void main(String[] args) throws FileNotFoundException {
-        try (Scanner scanner = new Scanner(new FileInputStream("file.txt"))) {
-            ArrayList<String> list1 = new ArrayList<>();
+    public static ArrayList<String> getList(String fileName) throws FileNotFoundException {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            ArrayList<String> list = new ArrayList<>();
+            String line;
 
-            while (scanner.hasNextLine()) {
-                list1.add(scanner.nextLine());
+            while ((line = br.readLine()) != null) {
+                list.add(line);
             }
 
-            System.out.println(list1);
+            return list;
+        } catch (IOException e) {
+            throw new FileNotFoundException("Файл %f не найден!", fileName);
         }
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        ArrayList<String> fileList = getList("file1.txt");
+        System.out.println(fileList);
+
+
 
         ArrayList<Integer> list2 = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 129, 130, -130, -129));
 

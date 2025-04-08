@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ArrayListHome {
-    public static ArrayList<String> getList(String fileName) throws FileNotFoundException {
+    public static ArrayList<String> getFileDataList(String fileName) throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             ArrayList<String> list = new ArrayList<>();
             String line;
@@ -38,7 +38,6 @@ public class ArrayListHome {
 
     public static ArrayList<Integer> getUniqueValuesList(ArrayList<Integer> list) {
         ArrayList<Integer> uniqueValuesList = new ArrayList<>(list.size());
-
         int j = 0;
 
         while (j < list.size()) {
@@ -53,13 +52,17 @@ public class ArrayListHome {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<String> fileList = getList("file.txt");
-        System.out.println(fileList);
-
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 129, 130, -130, -129));
-
-        System.out.println(getOddValuesList(list));
-
-        System.out.println(getUniqueValuesList(list));
+        // Первая подзадача
+        String fileName = "file.txt";
+        ArrayList<String> fileDataList = getFileDataList(fileName);
+        System.out.printf("Все строки из файла %s были скопированы в новый список на массиве: %s.%n", fileName, fileDataList);
+        // Вторая подзадача
+        ArrayList<Integer> randomValuesList = new ArrayList<>(Arrays.asList(0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 129, 130, -130, -129));
+        System.out.printf("Список случайных целых чисел: %s.%n", randomValuesList);
+        System.out.printf("Из списка случайных целых чисел были оставлены только нечетные значения: %s.%n",
+                getOddValuesList(randomValuesList));
+        // Третья подзадача
+        System.out.printf("Из списка случайных целых чисел %s был получен список с уникальными значениями: %s.",
+                randomValuesList, getUniqueValuesList(randomValuesList));
     }
 }

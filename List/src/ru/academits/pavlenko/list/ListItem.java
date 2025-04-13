@@ -22,11 +22,11 @@ public class ListItem<T> {
         this.data = data;
     }
 
-    public ListItem<T> getNext(){
+    public ListItem<T> getNext() {
         return next;
     }
 
-    public void setNext(ListItem<T> next){
-        this.next=next;
+    public void setNext(ListItem<T> next) {
+        this.next = next;
     }
 }

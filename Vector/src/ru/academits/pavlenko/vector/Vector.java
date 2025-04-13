@@ -32,7 +32,7 @@ public class Vector {
             throw new IllegalArgumentException("Size must be positive");
         }
 
-        this.vectorComponents = new double[vectorComponents.length];
+        this.vectorComponents = new double[size];
 
         for (int i = 0; i < vectorComponents.length; i++) {
             this.vectorComponents[i] = vectorComponents[i];
@@ -171,13 +171,13 @@ public class Vector {
 
     public static Vector addition(Vector aVector, Vector bVector) {
         int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
-        Vector firstVector = new Vector(maxVectorDimension, aVector.vectorComponents);
-        Vector secondVector = new Vector(maxVectorDimension, bVector.vectorComponents);
+        Vector vector1 = new Vector(maxVectorDimension, aVector.vectorComponents);
+        Vector vector2 = new Vector(maxVectorDimension, bVector.vectorComponents);
 
         double[] additionResult = new double[maxVectorDimension];
 
         for (int i = 0; i < maxVectorDimension; i++) {
-            additionResult[i] = firstVector.vectorComponents[i] + secondVector.vectorComponents[i];
+            additionResult[i] = vector1.vectorComponents[i] + vector2.vectorComponents[i];
         }
 
         return new Vector(maxVectorDimension, additionResult);
@@ -185,13 +185,13 @@ public class Vector {
 
     public static Vector subtraction(Vector aVector, Vector bVector) {
         int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
-        Vector firstVector = new Vector(maxVectorDimension, aVector.vectorComponents);
-        Vector secondVector = new Vector(maxVectorDimension, bVector.vectorComponents);
+        Vector vector1 = new Vector(maxVectorDimension, aVector.vectorComponents);
+        Vector vector2 = new Vector(maxVectorDimension, bVector.vectorComponents);
 
         double[] subtractionResult = new double[maxVectorDimension];
 
         for (int i = 0; i < maxVectorDimension; i++) {
-            subtractionResult[i] = firstVector.vectorComponents[i] - secondVector.vectorComponents[i];
+            subtractionResult[i] = vector1.vectorComponents[i] - vector2.vectorComponents[i];
         }
 
         return new Vector(maxVectorDimension, subtractionResult);
@@ -199,13 +199,13 @@ public class Vector {
 
     public static double scalarMultiplication(Vector aVector, Vector bVector) {
         int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
-        Vector firstVector = new Vector(maxVectorDimension, aVector.vectorComponents);
-        Vector secondVector = new Vector(maxVectorDimension, bVector.vectorComponents);
+        Vector vector1 = new Vector(maxVectorDimension, aVector.vectorComponents);
+        Vector vector2 = new Vector(maxVectorDimension, bVector.vectorComponents);
 
         double sum = 0;
 
         for (int i = 0; i < maxVectorDimension; i++) {
-            sum += firstVector.vectorComponents[i] * secondVector.vectorComponents[i];
+            sum += vector1.vectorComponents[i] * vector2.vectorComponents[i];
         }
 
         return sum;

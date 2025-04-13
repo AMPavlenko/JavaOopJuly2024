@@ -23,9 +23,9 @@ public class Main {
         System.out.printf("%nЗначения компонент вектора vector3 равны %s.%n", vector3);
 
         //Проверка работы метода прибавления к вектору другого вектора
-        double[] vector4Components = {2, 4, 6, 8, 10};
+        double[] vector4Components = {2, 4, 6, 8, 10, 1};
         Vector vector4 = new Vector(vector4Components);
-        double[] vector5Components = {1, -3, -1, 5, 10, 1};
+        double[] vector5Components = {1, -3, -1, 5, 10};
         Vector vector5 = new Vector(vector5Components);
 
         Vector vector4vector5addition = new Vector(vector4.addition(vector5));

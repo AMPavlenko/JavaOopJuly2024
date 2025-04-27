@@ -117,7 +117,7 @@ public class Matrix {
         Matrix multiplicationResult = new Matrix(n, m);
 
         for (int i = 0; i < n; i++) {
-            multiplicationResult.rows[i] = rows[i].scalarVectorMultiplication(scalar);
+            multiplicationResult.rows[i] = rows[i].getScalarVectorMultiplication(scalar);
         }
 
         return multiplicationResult;

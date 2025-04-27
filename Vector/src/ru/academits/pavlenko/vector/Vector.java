@@ -53,7 +53,7 @@ public class Vector {
         return stringBuilder.toString();
     }
 
-    public Vector addition(Vector vector) {
+    public Vector getAddition(Vector vector) {
         int maxVectorDimension = Math.max(this.vectorComponents.length, vector.vectorComponents.length);
         Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
         Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
@@ -67,7 +67,7 @@ public class Vector {
         return new Vector(maxVectorDimension, additionResult);
     }
 
-    public Vector subtraction(Vector vector) {
+    public Vector getSubtraction(Vector vector) {
         int maxVectorDimension = Math.max(this.vectorComponents.length, vector.vectorComponents.length);
         Vector thisVector = new Vector(maxVectorDimension, this.vectorComponents);
         Vector addVector = new Vector(maxVectorDimension, vector.vectorComponents);
@@ -81,7 +81,7 @@ public class Vector {
         return new Vector(maxVectorDimension, subtractionResult);
     }
 
-    public Vector scalarVectorMultiplication(double scalar) {
+    public Vector getScalarVectorMultiplication(double scalar) {
         double[] multiplicationResult = new double[vectorComponents.length];
 
         for (int i = 0; i < vectorComponents.length; i++) {
@@ -91,11 +91,11 @@ public class Vector {
         return new Vector(vectorComponents.length, multiplicationResult);
     }
 
-    public Vector vectorReversal() {
+    public Vector getVectorReversal() {
         double[] reversalResult = new double[vectorComponents.length];
 
         for (int i = 0; i < vectorComponents.length; i++) {
-            reversalResult[i] = -1 * vectorComponents[i];
+            reversalResult[i] = -vectorComponents[i];
         }
 
         return new Vector(vectorComponents.length, reversalResult);
@@ -161,51 +161,47 @@ public class Vector {
         final int prime = 37;
         int hash = 1;
         hash = prime * hash + Arrays.hashCode(vectorComponents);
-/*
-        for (int i = 0; i < this.n; i++) {
-            hash = prime * hash + Double.hashCode(this.vectorComponents[i]);
-        }
-*/
+
         return hash;
     }
 
-    public static Vector addition(Vector aVector, Vector bVector) {
-        int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
-        Vector vector1 = new Vector(maxVectorDimension, aVector.vectorComponents);
-        Vector vector2 = new Vector(maxVectorDimension, bVector.vectorComponents);
+    public static Vector getAddition(Vector vector1, Vector vector2) {
+        int maxVectorDimension = Math.max(vector1.vectorComponents.length, vector2.vectorComponents.length);
+        Vector givenDimensionVector1 = new Vector(maxVectorDimension, vector1.vectorComponents);
+        Vector givenDimensionVector2 = new Vector(maxVectorDimension, vector2.vectorComponents);
 
         double[] additionResult = new double[maxVectorDimension];
 
         for (int i = 0; i < maxVectorDimension; i++) {
-            additionResult[i] = vector1.vectorComponents[i] + vector2.vectorComponents[i];
+            additionResult[i] = givenDimensionVector1.vectorComponents[i] + givenDimensionVector2.vectorComponents[i];
         }
 
         return new Vector(maxVectorDimension, additionResult);
     }
 
-    public static Vector subtraction(Vector aVector, Vector bVector) {
-        int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
-        Vector vector1 = new Vector(maxVectorDimension, aVector.vectorComponents);
-        Vector vector2 = new Vector(maxVectorDimension, bVector.vectorComponents);
+    public static Vector getSubtraction(Vector vector1, Vector vector2) {
+        int maxVectorDimension = Math.max(vector1.vectorComponents.length, vector2.vectorComponents.length);
+        Vector givenDimensionVector1 = new Vector(maxVectorDimension, vector1.vectorComponents);
+        Vector givenDimensionVector2 = new Vector(maxVectorDimension, vector2.vectorComponents);
 
         double[] subtractionResult = new double[maxVectorDimension];
 
         for (int i = 0; i < maxVectorDimension; i++) {
-            subtractionResult[i] = vector1.vectorComponents[i] - vector2.vectorComponents[i];
+            subtractionResult[i] = givenDimensionVector1.vectorComponents[i] - givenDimensionVector2.vectorComponents[i];
         }
 
         return new Vector(maxVectorDimension, subtractionResult);
     }
 
-    public static double scalarMultiplication(Vector aVector, Vector bVector) {
-        int maxVectorDimension = Math.max(aVector.vectorComponents.length, bVector.vectorComponents.length);
-        Vector vector1 = new Vector(maxVectorDimension, aVector.vectorComponents);
-        Vector vector2 = new Vector(maxVectorDimension, bVector.vectorComponents);
+    public static double getScalarMultiplication(Vector vector1, Vector vector2) {
+        int maxVectorDimension = Math.max(vector1.vectorComponents.length, vector2.vectorComponents.length);
+        Vector givenDimensionVector1 = new Vector(maxVectorDimension, vector1.vectorComponents);
+        Vector givenDimensionVector2 = new Vector(maxVectorDimension, vector2.vectorComponents);
 
         double sum = 0;
 
         for (int i = 0; i < maxVectorDimension; i++) {
-            sum += vector1.vectorComponents[i] * vector2.vectorComponents[i];
+            sum += givenDimensionVector1.vectorComponents[i] * givenDimensionVector2.vectorComponents[i];
         }
 
         return sum;
